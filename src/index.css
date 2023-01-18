@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
+* {
+	font-family: -apple-system, 'Montserrat',
+		sans-serif !important;
+}
+
 body {
 	margin: 0;
-	font-family: -apple-system, 'Montserrat',
-		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	color: #363636 !important;
 }
 
 code {
