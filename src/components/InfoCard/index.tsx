@@ -5,11 +5,9 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-
-const InfoCard = ({ data }: any) => {
-
-	// console.log(data);
-
+const InfoCard: React.FC<any> = ({ data }) => {
+	const publishedDate = new Date(data.publishedAt)
+	console.log(publishedDate);
 
 	return (
 		<Card sx={{ maxWidth: 400 }}>
@@ -21,6 +19,10 @@ const InfoCard = ({ data }: any) => {
 					alt="green iguana"
 				/>
 				<CardContent>
+
+					<Typography gutterBottom variant="subtitle2" component="div">
+						{data.publishedAt}
+					</Typography>
 					<Typography gutterBottom variant="h5" component="div">
 						{data.title}
 					</Typography>

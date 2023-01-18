@@ -1,38 +1,14 @@
-import { useState, useEffect } from "react"
 import Grid from '@mui/material/Grid';
 import InfoCard from "../InfoCard";
+import { useFetch } from "../../hooks/useFetch";
 
-const CardGrid = () => {
-	const [data, setData] = useState(null)
-	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState(null)
-	useEffect(() => {
-		getData()
-	}, [])
-
-	const getData = async () => {
-		await fetch('https://api.spaceflightnewsapi.net/v3/articles')
-			.then(response => {
-				if (response.ok) {
-					return response.json();
-				}
-				throw response
-			}).then(data => {
-
-				setData(data)
-			}).catch(error => {
-				console.log('fetch error :', error)
-				setError(error)
-			}).finally(() => {
-				setLoading(false)
-			})
-	}
-
-
+const CardGrid: React.FC = () => {
+	const { data, loading, error } = useFetch('https://api.spaceflightnewsapi.net/v3/articles')
 
 	return (
 		<div style={{ marginTop: '45px' }}>
 			{loading && <p>Loading...</p>}
+			{error && <p>Something went wrong {error}</p>}
 			{data &&
 				<Grid container spacing={2}>
 					{Object.keys(data).map((key, index) => {
