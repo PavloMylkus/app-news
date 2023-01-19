@@ -7,18 +7,21 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { useDate } from '../../hooks/useDate';
 import { Link } from 'react-router-dom';
+import IArtice from '../../models';
 
-const InfoCard: React.FC<any> = ({ data }) => {
-	const { publishedDate } = useDate(data.publishedAt)
+
+const InfoCard: React.FC<IArtice> = (data: IArtice) => {
+
+	const { publishedDate } = useDate(data.data.publishedAt)
 
 	return (
 		<Card sx={{ maxWidth: 400 }}>
-			<Link to={'article/' + data.id}>
+			<Link to={'article/' + data.data.id}>
 				<CardActionArea>
 					<CardMedia
 						component="img"
 						height="217"
-						image={data.imageUrl}
+						image={data.data.imageUrl}
 						alt="green iguana"
 					/>
 					<CardContent>
@@ -27,16 +30,16 @@ const InfoCard: React.FC<any> = ({ data }) => {
 							{publishedDate}
 						</Typography>
 						<Typography gutterBottom variant="h5" component="div">
-							{data.title}
+							{data.data.title}
 						</Typography>
 						<Typography variant="body2" >
-							{data.summary.length > 100 ? `${data.summary.slice(0, 100)}...` : data.summary}
+							{data.data.summary.length > 100 ? `${data.data.summary.slice(0, 100)}...` : data.data.summary}
 						</Typography>
 					</CardContent>
 				</CardActionArea>
 			</Link>
 			<CardActions >
-				<Link to={'article/' + data.id}>
+				<Link to={'article/' + data.data.id}>
 					<Button color='primary'>
 						<Typography sx={{ fontWeight: "700" }} variant="subtitle1">
 							Read more

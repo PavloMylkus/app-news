@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
+import IArticle from "../../models"
 
 export const useFetch = (url: string) => {
 
-	const [data, setData] = useState(null)
+	const [data, setData] = useState<IArticle | any>()
 	const [loading, setLoading] = useState(true)
 	const [error, setError] = useState(null)
 

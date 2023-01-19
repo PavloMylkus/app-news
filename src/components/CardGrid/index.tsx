@@ -3,7 +3,7 @@ import InfoCard from "../InfoCard";
 import { useFetch } from "../../hooks/useFetch";
 
 const CardGrid: React.FC = () => {
-	const { data, loading, error } = useFetch('https://api.spaceflightnewsapi.net/v3/articles')
+	const { data, loading, error } = useFetch('https://api.spaceflightnewsapi.net/v3/articles?_limit=15')
 
 	return (
 		<div style={{ marginTop: '45px' }}>
