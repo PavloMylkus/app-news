@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -5,10 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import FormControl from "@mui/material/FormControl";
 import Divider from '@mui/material/Divider';
+import { useSearch } from '../../hooks/useSearch';
 
-interface Props {
-	children: string
-}
 
 const SearchInput = styled(FormControl)(() => ({
 	border: '1px solid #EAEAEA',
@@ -31,7 +30,16 @@ const StyledTypography = styled(Typography)(() => ({
 
 
 
-const SearchForm = () => {
+const SearchForm = ({ searchInput, setSearchInput }: any) => {
+
+	const onChangeValue = (e: any) => {
+		setSearchInput(e.target.value)
+	}
+	const onChangeSubmit = (e: any) => {
+		e.preventDefault()
+
+	}
+
 	const result = 6;
 
 	return (
@@ -41,13 +49,15 @@ const SearchForm = () => {
 				variant='h6'>
 				Filter by keywords
 			</StyledTypography>
-			<SearchInput component='form'>
+			<SearchInput onSubmit={onChangeSubmit} component='form'>
 				<IconButton type="button" sx={{ p: '10px' }} aria-label="search">
 					<SearchIcon />
 				</IconButton>
 				<InputBase
+					value={searchInput}
+					onChange={onChangeValue}
 					sx={{ ml: 1, flex: 1 }}
-					placeholder="The most successful IT companies in 2020"
+					placeholder="Search"
 				/>
 			</SearchInput>
 

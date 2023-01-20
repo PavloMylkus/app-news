@@ -2,8 +2,9 @@ import Grid from '@mui/material/Grid';
 import InfoCard from "../InfoCard";
 import { useFetch } from "../../hooks/useFetch";
 
-const CardGrid: React.FC = () => {
-	const { data, loading, error } = useFetch('https://api.spaceflightnewsapi.net/v3/articles?_limit=15')
+
+const CardGrid: React.FC<any> = (props: any) => {
+	const { data, loading, error } = useFetch(`https://api.spaceflightnewsapi.net/v3/articles?_limit=15&title_contains=${props.searchInput}`)
 
 	return (
 		<div style={{ marginTop: '45px' }}>
