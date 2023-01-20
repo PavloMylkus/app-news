@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Article from './pages/Article';
 import Home from "./pages/Home";

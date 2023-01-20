@@ -16,3 +16,19 @@ export default interface IArtice {
 	}
 
 }
+export default interface IArticeById {
+
+	events: []
+	featured: Boolean
+	id: Number
+	imageUrl: string
+	launches: []
+	newsSite: string
+	publishedAt: string
+	summary: string
+	title: string
+	updatedAt: string
+	url: string
+
+
+}

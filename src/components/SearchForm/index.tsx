@@ -1,13 +1,9 @@
-import { useState } from 'react'
 import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import FormControl from "@mui/material/FormControl";
-import Divider from '@mui/material/Divider';
-import { useSearch } from '../../hooks/useSearch';
-
 
 const SearchInput = styled(FormControl)(() => ({
 	border: '1px solid #EAEAEA',
@@ -27,17 +23,21 @@ const StyledTypography = styled(Typography)(() => ({
 	lineHeight: '20px ',
 })) as typeof Typography;
 
+interface ISetInput {
+	(searchInput: string): void;
+}
+interface IProps {
+	searchInput: string
+	setSearchInput: ISetInput
+}
 
-
-
-const SearchForm = ({ searchInput, setSearchInput }: any) => {
+const SearchForm: React.FC<IProps> = ({ searchInput, setSearchInput }) => {
 
 	const onChangeValue = (e: any) => {
 		setSearchInput(e.target.value)
 	}
 	const onChangeSubmit = (e: any) => {
 		e.preventDefault()
-
 	}
 
 	const result = 6;
@@ -61,13 +61,6 @@ const SearchForm = ({ searchInput, setSearchInput }: any) => {
 				/>
 			</SearchInput>
 
-			<StyledTypography
-				sx={{ marginTop: '40px', marginBottom: '5px' }}
-				component='h2'
-				variant='h6'>
-				Results: {result}
-			</StyledTypography>
-			<Divider />
 		</>
 
 	)
